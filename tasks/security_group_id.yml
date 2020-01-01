@@ -1,0 +1,6 @@
+- name: Extract SecurityGroupIds
+  shell:
+    cmd: aws ec2 describe-instances --filters Name=availability-zone,Values=us-east-1a |grep SecurityGroups -A3 | grep GroupId | uniq | awk -F ':' '{print $2}' | sed 's/"//g' | sed 's/\ //g'
+  register: security_group_id
+
+  #- debug: var=security_group_id.stdout

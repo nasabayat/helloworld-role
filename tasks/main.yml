@@ -1,0 +1,5 @@
+---
+# tasks file for helloworld_flask
+
+- include_tasks: security_group_id.yml
+- include_tasks: provision.yml

@@ -1,0 +1,7 @@
+---
+- name: Extract IP of EC2 based on the stack name, {{ provision_stack_name }}
+  shell:              
+    cmd: aws ec2 describe-instances --filters Name=availability-zone,Values=us-east-1a  "Name=tag:aws:cloudformation:stack-name,Values={{ provision_stack_name }}"  --query "Reservations[].Instances[].[PublicIpAddress]" | grep -v "\[\|\]" | sed 's/"//g' | sed 's/\ //g'  
+  register: ec2_ip
+
+#- debug: var=ec2_ip.stdout

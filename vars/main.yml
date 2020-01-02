@@ -12,8 +12,11 @@ ec2_user: ubuntu
 local_user: naser
 
 git_version: develop    # branch which you're going to clone
-repo_dest: "{{ current_directory }}"
+repo_dest: /home/{{ ec2_user }}/github
 ansible_python_interpreter: "/usr/bin/python3.6"
 
 ec2_timezone: Etc/UTC
 ansible_ssh_private_key_file: "{{ provision_KeyName }}"
+
+git_version: develop    # branch which you're goine to clone
+git_repo: https://github.com/nasabayat/Bitwala.git

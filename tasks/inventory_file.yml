@@ -15,4 +15,4 @@
     mode: '644'
     block: |
       [{{ provision_ServerName }}]
-      {{ ec2_ip.stdout }}
+      {{ ec2.stdout }}

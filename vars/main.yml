@@ -6,3 +6,6 @@ provision_KeyName: "KeyPair3"
 provision_InstanceType: t2.micro
 provision_Image: ami-04b9e92b5572fa0d1 
 provision_ServerName: 'Bitwala'
+
+ec2_user: ubuntu
+local_user: naser

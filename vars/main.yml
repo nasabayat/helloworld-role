@@ -9,3 +9,7 @@ provision_ServerName: 'Bitwala'
 
 ec2_user: ubuntu
 local_user: naser
+
+git_version: develop    # branch which you're going to clone
+repo_dest: "{{ current_directory }}"
+ansible_python_interpreter: "/usr/bin/python3.6"

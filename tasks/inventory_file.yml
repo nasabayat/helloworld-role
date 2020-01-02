@@ -3,6 +3,8 @@
   shell:
     cmd: pwd
   register: inventory_pwd
+- set_fact: 
+    current_directory="{{ inventory_pwd.stdout }}"
 
 - name: Creat inventory file and then insert IP of new EC2
   blockinfile:

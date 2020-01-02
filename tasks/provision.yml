@@ -1,18 +1,24 @@
 ---
-# - name: Provision Ec2
-#   cloudformation:
-#     stack_name: "{{ provision_stack_name }}"
-#     state: present
-#     region: "{{ provision_region }}"
-#     disable_rollback: true
-#     template: cloudformation.template
-#     template_parameters:
-#       KeyName: "{{ provision_KeyName }}"
-#       SecurityGroupIds: "{{ security_group_id.stdout }}"
-#       InstanceType: "{{ provision_InstanceType }}"
-#       Image: "{{ provision_Image }}" 
-#       ServerName: "{{ provision_ServerName }}"
+- name: Provision Ec2
+  cloudformation:
+    stack_name: "{{ provision_stack_name }}"
+    state: present
+    region: "{{ provision_region }}"
+    disable_rollback: true
+    template: cloudformation.template
+    template_parameters:
+      KeyName: "{{ provision_KeyName }}"
+      SecurityGroupIds: "{{ security_group_id.stdout }}"
+      InstanceType: "{{ provision_InstanceType }}"
+      Image: "{{ provision_Image }}" 
+      ServerName: "{{ provision_ServerName }}"
 
 - name: Creates a new ec2 key pair named `KeyPair3` if not present, returns generated
   ec2_key:
     name: "{{ provision_KeyName }}"
+    region: "{{ provision_region }}"
+  register: ec2_key_result
+
+- name: Save private key
+  copy: content="{{ ec2_key_result.key.private_key }}" dest="./bitwala.pem" mode=0600  
+  when: ec2_key_result.changed

@@ -1,11 +1,12 @@
 ---
 # vars file for helloworld_flask
 provision_stack_name: 'BitwalaStack-1'
-provision_region: us-east-1      
-provision_KeyName: "KeyPair3"
-provision_InstanceType: t2.micro
-provision_Image: ami-04b9e92b5572fa0d1 
+provision_region: us-east-1
 provision_ServerName: 'Bitwala'
+provision_KeyName: "{{ provision_ServerName }}"    #"KeyPair3"
+provision_InstanceType: t2.micro
+provision_Image: ami-04b9e92b5572fa0d1
+
 
 ec2_user: ubuntu
 local_user: naser

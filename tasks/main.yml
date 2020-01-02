@@ -2,6 +2,8 @@
 # tasks file for helloworld_flask
 
 #- include_tasks: security-group-id.yml
-- include_tasks: provision.yml
-- include_tasks: ec2-ip.yml
-- include_tasks: inventory_file.yml
+# - include_tasks: provision.yml
+# - include_tasks: ec2-ip.yml
+# - include_tasks: inventory_file.yml
+# - include_tasks: timezone.yml
+- include_tasks: docker_installation.yml

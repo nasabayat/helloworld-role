@@ -1,0 +1,16 @@
+---
+- name: Create inventory file in currect directoy.
+  shell:
+    cmd: pwd
+  register: inventory_pwd
+
+- name: Creat inventory file and then insert IP of new EC2
+  blockinfile:
+    path: "{{ inventory_pwd.stdout }}/inventory_file"
+    create: yes
+    group: "{{ local_user }}"
+    owner: "{{ local_user }}"
+    mode: '644'
+    block: |
+      [{{ provision_ServerName }}]
+      {{ ec2_ip.stdout }}

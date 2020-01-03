@@ -1,0 +1,11 @@
+---
+- name: login to ecr
+  shell:
+    #cmd: eval $(aws ecr get-login --no-include-email --region us-east-1)
+    cmd: docker login -u nasabayat -p Na123456b 
+
+- name: run docker-compose file
+  docker_compose:
+    project_src: "{{ repo_dest }}"
+    #project_src: /home/ubuntu/github
+    state: present

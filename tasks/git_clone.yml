@@ -1,0 +1,17 @@
+---
+- name: Create github dest direcoty for cloning
+  file:
+    path: "{{ repo_dest }}"
+    state: directory
+    owner: "{{ ec2_user }}"
+    group: "{{ ec2_user }}"
+    mode: '764'
+
+- name: Clone the repository
+  git:
+    repo: "{{ git_repo }}"
+    dest: "{{ repo_dest }}"
+    clone: yes
+    version: "{{ git_version }}"    
+#- debug: 
+#    msg: "{{ repo_dest }}"

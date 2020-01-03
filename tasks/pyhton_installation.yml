@@ -1,0 +1,31 @@
+---
+- name: Python installation
+  apt:
+    name: ['python3-pip', 'python3-dev']
+    state: present
+    update_cache: yes
+
+Following task need root access to run, because of that use 'python3' instead of 'python'
+- name: Create a symbolic link
+  file:
+    src: /usr/local/bin/python
+    dest: /usr/bin/python3
+    owner: "{{ ec2_user }}"
+    group: "{{ ec2_user }}"
+    state: link
+
+- name: Install pip
+  shell: 
+    cmd: pip3 install --upgrade pip
+
+- name: Install boto3
+  pip:
+    name: boto3
+
+- name: docker-cmpose installation which is needed for docker-compose ansible module
+  pip:
+    name: docker-compose
+
+- name: aws installation
+  apt:
+    name: awscli

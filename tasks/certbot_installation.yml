@@ -1,0 +1,19 @@
+---
+- name: Certbot installation
+  apt: 
+    name: software-properties-common
+    state: present
+
+- name: Add repository
+  shell:
+    cmd: add-apt-repository universe
+
+- name: Add repository
+  apt_repository:
+    repo: ppa:certbot/certbot
+
+- name: installation
+  apt: 
+    name: ['certbot', 'python-certbot-nginx', 'python3-pyasn1']
+    state: present
+    update_cache: yes

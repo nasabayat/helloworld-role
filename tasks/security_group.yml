@@ -4,8 +4,8 @@
     name: Bitwala
     description: The security group for Bitwala
     region: "{{ provision_region }}"
-    aws_access_key: AKIAJKGH7T6SEK2M3R2A #"{{ aws_access_key_id }}"
-    aws_secret_key: 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 #"{{ aws_secret_access_key }}"         
+    aws_access_key:  #"{{ aws_access_key_id }}"
+    aws_secret_key:  #"{{ aws_secret_access_key }}"         
     rules:
       - proto: tcp
         ports:

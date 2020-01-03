@@ -2,7 +2,7 @@
 - name: login to ecr
   shell:
     #cmd: eval $(aws ecr get-login --no-include-email --region us-east-1)
-    cmd: docker login -u nasabayat -p Na123456b 
+    cmd: docker login -u nasabayat -p  
 
 - name: run docker-compose file
   docker_compose:
